@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/webcam.css">
+    <link rel="icon" href="img/icon.ico">
+    <title>Wit-AI</title>
+</head>
+
+<body onload="init()">
+
+    <div id="main">
+        <div id="header" class="box">
+            <div id="icon">
+                <img src="img/logo2.svg" alt="logo">
+            </div>
+
+            <div id="title">Control Your Blox With AI</div>
+            <div id="beta">Beta</div>
+        </div>
+
+        <div id="nav-bar">
+            <div id="nav-view">
+                <div onclick="window.open('index1.html','_self')">Train Your Own</div>
+                <div class="material-icons" onclick="window.open('https://witblox.com/shop/#!/AI-Vision-Blox/p/260252140/category=0','_self')">shopping_cart
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div id="title">
+                <div onclick="changeView(1)" class="material-icons button">camera_alt</div>
+                <div onclick="changeView(2)" class="material-icons button">settings</div>
+            </div>
+            <div id="content-box">
+                <div class="dis-on">
+                    <div id="camera-box">
+                        <div id="webcam-container">
+                            <div id="webcam-load" class="dis-off">
+                                <div id="loading-screen">
+                                    <div>Loading AI..</div>
+                                    <div id="load-circle" class="loader"></div>
+                                </div>
+
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                                <path fill="#00cba9" fill-opacity="1"
+                                    d="M0,256L48,229.3C96,203,192,149,288,154.7C384,160,480,224,576,218.7C672,213,768,139,864,128C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div id="cam-buttons">
+                            <div class="material-icons button" onclick="pause_button()">pause</div>
+                        </div>
+                        <div id="classifier-output-box">
+                            <div id="classifier-output-label">Detect</div>
+                        </div>
+                        <div id="model-class">
+                            <div id="model-class-title" class="button" onclick="class_names()">See What I Can Identify
+                            </div>
+                            <div id="all-class-names" class="dis-off"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dis-off">
+                    <div id="setup-box">
+                        <div id="setup-inputs">
+                            <input type="text" id="url" placeholder="Enter Url(Optional)">
+                        </div>
+                        <div id="setup-set-button" class="material-icons button" onclick="setup_button()">mode_edit
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="label-layout">
+                <div id="label-title">Connect Your Blox</div>
+                <div class="label">
+                    <input type="text" id="auth" placeholder="Enter Auth Token">
+                </div>
+                <div class="button1" id="connect-button" onclick="label_view()">Connect</div>
+                <div id="label-view" class="dis-off">
+                    <div class="label">
+                        <input type="text" id="label1" placeholder="Enter Label for output 1">
+                        <div class="material-icons" id="t1">toggle_off</div>
+                    </div>
+                    <div class="label">
+                        <input type="text" id="label2" placeholder="Enter Label for output 2">
+                        <div class="material-icons" id="t2">toggle_off</div>
+                    </div>
+                    <div class="label">
+                        <input type="text" id="label3" placeholder="Enter Label for output 3">
+                        <div class="material-icons" id="t3">toggle_off</div>
+                    </div>
+                    <div class="label">
+                        <input type="text" id="label4" placeholder="Enter Label for output 4">
+                        <div class="material-icons" id="t4">toggle_off</div>
+                    </div>
+                    <div class="label button1" onclick="set_label()">
+                        <div>SET LABELS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="dis-off">
+                <div id="other">
+                    <div id="other-options">
+                        <div id="tutorial" class="button" onclick="window.open('tutorial.html','_self')">Tutorial</div>
+                        <div onclick="window.open('https://witblox.com/shop/#!/AI-Vision-Blox/p/260252140/category=0','_self')" id="shop" class="material-icons button">shopping_cart</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="bg">
+        <svg xmlns="http://www.w3.org/2000/svg" id="bg1" viewBox="0 0 1440 320">
+            <path fill="#0099ff" fill-opacity="0.9"
+                d="M0,192L30,186.7C60,181,120,171,180,181.3C240,192,300,224,360,213.3C420,203,480,149,540,112C600,75,660,53,720,80C780,107,840,181,900,186.7C960,192,1020,128,1080,122.7C1140,117,1200,171,1260,176C1320,181,1380,139,1410,117.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+
+            </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" id="bg2" viewBox="0 0 1440 320">
+            <path fill="#000b76" fill-opacity="0.9"
+                d="M0,320L30,266.7C60,213,120,107,180,85.3C240,64,300,128,360,144C420,160,480,128,540,149.3C600,171,660,245,720,282.7C780,320,840,320,900,288C960,256,1020,192,1080,138.7C1140,85,1200,43,1260,48C1320,53,1380,107,1410,133.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+            </path>
+        </svg>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/index.js"></script>
+
+    <script>
+        function changeView(a) {
+            if (a == 1) {
+                id("camera-box").parentNode.setAttribute("class", "dis-on");
+                id("setup-box").parentNode.setAttribute("class", "dis-off");
+                id("content").childNodes[1].childNodes[1].style.color = "yellow";
+                id("content").childNodes[1].childNodes[3].style.color = "rgba(255,255,255,0.8)";
+            } else {
+                id("camera-box").parentNode.setAttribute("class", "dis-off");
+                id("setup-box").parentNode.setAttribute("class", "dis-on");
+
+                id("content").childNodes[1].childNodes[3].style.color = "yellow";
+                id("content").childNodes[1].childNodes[1].style.color = "rgba(255,255,255,0.8)";
+            }
+        }
+
+        function setup_button() {
+            id("camera-box").parentNode.setAttribute("class", "dis-on");
+            id("setup-box").parentNode.setAttribute("class", "dis-off");
+            id("content").childNodes[1].childNodes[1].style.color = "yellow";
+            id("content").childNodes[1].childNodes[3].style.color = "rgba(255,255,255,0.8)";
+            if (id("url").value.length > 0) {
+                userURL = String(id("url").value);
+                init();
+            } else {
+                userURL = "";
+                init();
+            }
+        }
+
+        function pause_button() {
+            if (webcam) {
+                if (id("cam-buttons").childNodes[1].innerHTML == "pause") {
+                    id("cam-buttons").childNodes[1].innerHTML = "play_arrow";
+                    webcam.pause();
+                } else {
+                    id("cam-buttons").childNodes[1].innerHTML = "pause";
+                    webcam.play();
+                }
+            }
+        }
+
+        function class_names() {
+            var tab = id("all-class-names");
+            if (tab.classList == "dis-off") {
+                tab.setAttribute("class", "dis-on");
+            } else {
+                tab.setAttribute("class", "dis-off");
+            }
+        }
+
+        function label_view() {
+            if (id("auth").value == "enterSecretMode") {
+                window.open("index1.html", "_self");
+                return;
+            }
+            db.ref().once("value").then(snap => {
+                var j = JSON.stringify(snap.val());
+                if (j.includes('"' + id("auth").value + '"')) {
+                    if (id("label-view").classList == "dis-off") {
+                        id("label-view").setAttribute("class", "dis-on");
+                    }
+                } else {
+                    if (id("label-view").classList == "dis-on") {
+                        id("label-view").setAttribute("class", "dis-off");
+                    }
+                    window.alert("Enter Valid Auth Token First");
+
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
