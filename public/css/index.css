@@ -1,423 +1,182 @@
-#content {
-    margin: 2em;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#content-box {
-    overflow: hidden;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-    box-shadow: 0 0.5em 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-#content>#title {
-    width: 80vw;
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(32, 32, 32);
-    color: rgba(255, 255, 255, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    overflow: hidden;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    box-shadow: 0 0.5em 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-#content>#title>div {
-    width: 50%;
-    text-align: center;
-    padding: 1em;
-}
-
-#cam-buttons {
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#cam-buttons>div {
-    font-size: 5vw;
-}
-
-#classifier-output-box {
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
-    color: rgb(255, 255, 255);
-    padding: 1em;
-    margin: 1em 0;
-    border-radius: 1em;
-}
-
-#model-class {
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 80%;
-    background-color: white;
-    color: rgb(32, 32, 32);
-    margin: 1em 0;
-    text-align: center;
-}
-
-#model-class-title {
-    background-color: rgb(62, 62, 62);
-    color: white;
-    font-weight: 999;
+.i-index-display {
     width: 100%;
-    padding: 1em;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2em;
 }
 
-#all-class-names {
-    font-weight: 900;
-    max-height: 30vh;
+.i-index-box {
+    margin-top: 2em;
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.i-index-box>div {
+    margin-top: 1em;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+}
+
+.i-button-input>#connection-status {
+    grid-column: 1/3;
+    width: 100%;
+    text-align: center;
+}
+
+.i-index-box .webcam-box {
+    width: 60vw;
+    height: 60vw;
+    background-color: aliceblue;
+    border-radius: 50%;
+    margin: 0.5em 0;
+    border: 1em solid rgb(255, 212, 247);
+    border-left: 1em solid rgb(255, 137, 235);
+    border-right: 1em solid rgb(255, 137, 235);
+    box-shadow: 0 0 8px 0 rgb(255, 137, 235), 0 0 1em -1em rgba(0, 0, 0, 0.5);
+}
+
+.i-index-box .webcam-box>.webcam-container {
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    border-radius: 50%;
+    box-shadow: inset 0 0 px 8px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.i-index-box .webcam-box>.webcam-container>canvas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.i-index-box #label-view {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    max-height: 40vh;
     overflow-y: auto;
+}
+
+.i-index-box .label-shower {
     width: 100%;
-    overflow-x: hidden;
-    font-size: 3vw;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-    background: rgba(32, 32, 32, 0.4);
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 15px;
-    background-color: #861657;
-    background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
-}
-
-#all-class-names>div>div {
-    padding: 0.5em;
-    margin-top: 0.5em;
-}
-
-#inbuilt-tf {
-    margin-top: 1em;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    width: 80%;
-    color: white;
-    margin: 1em 0;
-    text-align: center;
-}
-
-#inbuilt-tf>#title {
-    background-color: rgb(62, 62, 62);
-    color: white;
-    font-weight: 999;
-    width: 100%;
-    padding: 1em;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-}
-
-#inbuilt-tf>div {
-    margin-top: 1em;
-}
-
-#inbuilt-tf>div>div {
-    margin-top: 1em;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-
-#inbuilt-tf>div>div>div {
-    margin-left: 1em;
-}
-
-#setup-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 80vw;
-    background-color: rgb(32, 32, 32);
-    color: rgba(255, 255, 255, 0.8);
-}
-
-#setup-box>#setup-inputs {
-    margin-top: 1vh;
-    display: flex;
-    width: 50vw;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#setup-box>#setup-inputs>* {
-    margin-top: 1em;
-}
-
-#setup-set-button {
-    margin: 1em 0;
-    padding: 0.5em;
-    font-size: 5vw;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgb(32, 32, 32);
-    border-radius: 1em;
-    font-weight: 999;
-}
-
-#label-layout {
-    margin-top: 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 80vw;
-    background-color: rgb(32, 32, 32);
-    color: rgba(255, 255, 255, 0.8);
-    border-radius: 1em;
-    overflow: hidden;
-    box-shadow: 0 0.5em 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-#label-title {
-    font-size: 6vw;
-    padding-top: 1em;
-}
-
-#connect-button {
-    color: black;
     margin-bottom: 1em;
 }
 
-#label-view {
-    margin: 1em;
-}
-
-.label {
-    margin: 1em 0;
-    display: flex;
-    flex-direction: row;
-}
-
-.label>div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 1em;
-    font-size: 6vw;
-}
-
-.label .button {
-    padding: 1em;
+.i-index-box .label-shower .title {
+    width: 90%;
     text-align: center;
+    background-color: rgb(58, 58, 58);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }
 
-.box {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+.i-index-box .label-shower .label-base {
+    width: 90%;
+    text-align: center;
+    background-color: rgb(58, 58, 58);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    height: 1em;
+    margin-bottom: 1em;
+    border-top: 1px solid white;
 }
 
-#other {
-    margin-top: 5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80vw;
-    background-color: rgb(32, 32, 32);
-    color: rgba(255, 255, 255, 0.8);
-    border-radius: 1em;
-    overflow: hidden;
-    box-shadow: 0 0.5em 8px 1px rgba(0, 0, 0, 0.5);
-}
-
-#other-options {
+.i-index-box #label-view>div {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 0.5em 0;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    background-color: rgb(32, 32, 32);
+    box-shadow: 0 1em 2em 1em rgba(0, 0, 0, 1);
+    text-align: center;
+    cursor: pointer
 }
 
-#other-options>div {
-    width: 50%;
-    padding: 1em;
+.i-index-box #label-view>div>div {
+    width: 100%;
     text-align: center;
 }
 
-#bg {
-    width: 100vw;
-    position: absolute;
+.i-index-box #label-view>div .button-box {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-#bg1 {
-    position: absolute;
-}
-
-#bg2 {
-    position: absolute;
-}
-
-.button {
+.i-index-box #label-view>div .button-box .button {
+    background-color: rgb(255, 172, 95);
+    padding: 0.5em 0;
     cursor: pointer;
 }
 
-.button1 {
-    cursor: pointer;
-    padding: 0.5em;
-    background-color: rgb(245, 217, 92);
-    border-radius: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
+.i-index-box #label-view>div .button-box .button:nth-child(odd) {
+    background-color: rgb(255, 144, 41);
 }
 
-@media screen and (min-width:600px) {
-    #header {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        background-color: rgb(52, 52, 52);
-    }
-    #header>#icon {
-        width: 30vw;
-        height: 20vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #header>#icon>img {
-        width: 100%;
-        height: 100%;
-    }
-    #header>#title {
-        font-size: 2vw;
-        font-weight: 999;
-        color: rgba(255, 255, 255, 0.7);
-        padding: 0.5em;
-    }
-    #content {
-        margin: 2vw;
-        width: 100vw;
-    }
-    #content>#title {
-        width: 60vw;
-        display: flex;
-        flex-direction: row;
-        background-color: rgb(32, 32, 32);
-        color: rgba(255, 255, 255, 0.8);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    }
-    #content>#title>div {
-        width: 50%;
-        text-align: center;
-        padding: 1em;
-        font-size: 3vw;
-    }
-    #cam-buttons {
+#label-output {
+    width: 100%;
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+@media (min-width:720px),
+(min-height:550) {
+    .i-index-box {
         margin-top: 2em;
-        font-size: 2vw;
-    }
-    #classifier-output-box {
-        margin-top: 1em;
-        width: 30%;
-        margin: 3em 0;
-    }
-    #model-class {
-        margin-bottom: 3em;
-    }
-    #model-class>#model-class-title {
-        font-size: 2vw;
-    }
-    #all-class-names {
-        font-size: 1vw;
-    }
-    #all-class-names>div {
-        margin-top: 1em;
-    }
-    #setup-box {
-        width: 60vw;
-    }
-    #setup-box>#setup-inputs {
-        margin-top: 1vh;
-        display: flex;
-        width: 40vw;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    #setup-box>#setup-inputs>* {
-        margin-top: 1em;
-    }
-    #setup-set-button {
-        margin: 1em 0;
-        padding: 0.5em;
-        font-size: 3vw;
-        background-color: rgba(255, 255, 255, 0.8);
-        color: rgb(32, 32, 32);
-        border-radius: 1em;
-        font-weight: 999;
-    }
-    input[type=text] {
-        width: 80%;
-        font-size: 3vw;
-        border-radius: 1em;
-        padding: 0.5em;
-        border: none;
-        outline: none;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: rgb(255, 255, 255);
-    }
-    #label-layout {
-        margin-top: 5vw;
-        width: 60vw;
-    }
-    #label-view {
-        margin: 3em;
-    }
-    #label-title {
-        font-size: 3vw;
-    }
-    #connect-button {
-        font-size: 2vw;
-    }
-    .label {
-        margin: 1em 0;
-        display: flex;
-        flex-direction: row;
-    }
-    .label>div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 1em;
-        font-size: 3vw;
-    }
-    #other {
-        margin-top: 5vh;
-        width: 60vw;
-    }
-    #other-options {
+        margin-left: 2em;
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        color: white;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
-    #other-options>div {
-        width: 50%;
-        padding: 1em;
-        text-align: center;
-        font-size: 3vw;
+    .i-index-box .webcam-box {
+        width: 20vw;
+        height: 20vw;
+        background-color: aliceblue;
+        border-radius: 50%;
+        margin: 0.5em 0;
+        border: 1em solid rgb(255, 212, 247);
+        border-left: 1em solid rgb(255, 137, 235);
+        border-right: 1em solid rgb(255, 137, 235);
+        box-shadow: 0 0 8px 0 rgb(255, 137, 235), 0 0 1em -1em rgba(0, 0, 0, 0.5);
+    }
+    .i-index-box>div {
+        width: 90%;
+        height: 100%;
     }
 }

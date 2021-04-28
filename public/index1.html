@@ -1,183 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index1.css">
-
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
-
-
-    <title>Document</title>
+    <title>Wit-AI</title>
 </head>
 
 <body onload="app()">
-    <div id="main">
-        <div id="header">
-            <div id="container">
-                <div id="backface">
-                    <div id="frontface">
-                        <img src="img\logo2.svg" alt="logo">
-                        <div id="title">Train Your Own AI</div>
-                        <div id="learn" onclick="window.open('tutorial.html','_self')">
-                            <div id="title">Alpha</div>
-                            <div class="material-icons">info</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div id="content">
-            <div id="info-collector">
-                <div id="backface">
-                    <div id="frontface">
-                        <div id="auth-box">
-                            <div id="title">Have the AI Blox?</div>
-                            <div id="auth-input">
-                                <input type="text" id="auth" placeholder="Enter Your Auth Token">
-                                <div id="button" onclick="check_auth()" class="button">Set</div>
-                            </div>
-                            <div id="status"></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div id="toast-show" class="dis-on">
-                <div id="toast-container">
-                    <div id="toast">Enter Stuff</div>
-                </div>
-            </div>
-
-            <div id="backface">
-                <div id="frontface">
-                    <div id="webcam-container">
-                        <div id="title">Camera</div>
-                        <div id="webcam-box">
-                            <video autoplay playsinline muted id="webcam"></video>
-                        </div>
-
-                        <div id="label-container">
-                            <div id="backface">
-                                <div id="frontface">
-                                    <div id="label-box"></div>
-                                    <div id="prob-box">
-                                        <div id="prob-loader"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div id="model-info">
-                            <div id="title">What Do You Want To Train?</div>
-
-                            <div id="exp">
-                                <div>
-                                    <div id="count">
-                                        <div id="up" onclick="changeNum(1)" class="button1 material-icons">arrow_drop_up
-                                        </div>
-                                        <div>L
-                                            <div id="number">1</div>
-                                        </div>
-                                        <div id="down" onclick="changeNum(0)" class="button2 material-icons">
-                                            arrow_drop_down</div>
-                                    </div>
-                                </div>
-                                <div id="exp-opt-1">
-                                    <input type="text" id="label" placeholder="Enter a Label">
-                                    <div id="exp-button" class="button" onclick="setLabel()">Train</div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/index1.js"></script>
-    <script>
-        function changeNum(a) {
-            var val = Number(id("number").innerHTML);
-            if (a == 1) {
-                if (val > 1) {
-                    id("number").innerHTML = val - 1;
-                }
-            } else {
-                if (val < 4) {
-                    id("number").innerHTML = val + 1;
-                }
-            }
-            if (classes[Number(id("number").innerHTML) - 1]) {
-                id("label").value = classes[Number(id("number").innerHTML) - 1];
-            } else {
-                id("label").value = "";
-            }
-        }
-        var arr = [];
-
-        function setLabel() {
-            var val = id("label").value;
-            var index = Number(id("number").innerHTML) - 1;
-
-            arr[index] = val;
-            console.log(arr);
-        }
-
-        function check_auth() {
-            var test_len = (id("auth").value.length == 10) ? true : false;
-            var test = confirm("Your Auth Token Is: " + id("auth").value);
-            if (test && test_len) {
-                db.ref().once("value").then(snap => {
-                    var j = JSON.stringify(snap.val());
-                    if (j.includes('"' + id("auth").value + '"')) {
-                        auth_token = id("auth").value;
-                        id("info-collector").childNodes[1].classList.add("glow1");
-                        id("status").innerHTML = "Connected! &#129311;";
-
-                    } else {
-                        window.alert("Enter Valid Auth Token First");
-                        auth_token = "";
-                    }
-                });
-            } else {
-                id("auth").value = "";
-            }
-        }
-
-        function flip_camera() {
-            if (faceMode == "user") {
-                faceMode = "environment";
-            } else {
-                faceMode = "user";
-            }
-            app();
-        }
-
-        id("exp-button").onclick = () => {
-            if (id("label").value.length < 3) {
-                id("toast").innerHTML = "Enter Someting First";
-            } else {
-                id("toast").innerHTML = "Train Successful!";
-            }
-            id("toast-show").classList.add("toast-animate");
-            setTimeout(() => {
-                id("toast-show").classList.remove("toast-animate");
-            }, 3000);
-        }
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier" type="text/javascript"></script>
+    <script src="js/struct.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <script src="js/index1.js" type="text/javascript"></script>
+    <script src="js/AI2.js" type="text/javascript"></script>
 </body>
 
 </html>

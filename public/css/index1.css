@@ -1,486 +1,76 @@
-body {
-    margin: 0;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    user-select: none;
-}
-
-#main {
-    width: 100vw;
-    background-color: rgb(5, 2, 15);
-    min-height: 100vh;
+.main {
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
-#header {
-    width: 100%;
-    position: relative;
+.camera-box {
+    width: 90%;
+    color: white;
+    margin-top: 0.5em;
 }
 
-#header>#container {
+.webcam {
+    width: 60vw;
+    height: 60vw;
+    background-color: aliceblue;
+    border-radius: 50%;
+    margin: 0.5em 0;
+    border: 1em solid rgb(255, 212, 247);
+    border-left: 1em solid rgb(255, 137, 235);
+    border-right: 1em solid rgb(255, 137, 235);
+    box-shadow: 0 0 8px 0 rgb(255, 137, 235), 0 0 1em -1em rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#console {
+    margin: 1em 0;
+}
+
+.webcam video {
     width: 100%;
     height: 100%;
 }
 
-#container>#backface {
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 63%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1em;
-    border-radius: 1em;
-}
-
-#container>#backface>#frontface {
-    width: 100%;
-    background-color: rgb(22, 22, 22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-}
-
-#container>#backface>#frontface>img {
-    width: 8em;
-    height: 8em;
-}
-
-#container>#backface>#frontface>#title {
-    font-size: 6vw;
-    padding-bottom: 1em;
-}
-
-#container>#backface>#frontface>#learn {
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/*Content*/
-
-#content {
-    width: 100%;
-    margin-top: 2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#info-collector {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#info-collector>#backface {
-    width: 80%;
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 83%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 0.5em;
-    border-radius: 0.5em;
-}
-
-#info-collector>#backface>#frontface {
-    width: 100%;
-    background-color: rgb(22, 22, 22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 0.5em;
-}
-
-#auth-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 1em;
-}
-
-#auth-box>#auth-input {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    margin: 0 1em;
-}
-
-#model-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 2em;
-}
-
-#model-info>#model-input {
-    margin-top: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#content>#backface {
+.auth-box {
     margin: 1em 0;
-    width: 80%;
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 63%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1em;
-    border-radius: 1em;
-}
-
-#content>#backface>#frontface {
-    width: 100%;
-    background-color: rgb(22, 22, 22);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 0.5em;
-}
-
-#webcam-container {
     width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border-radius: 1em;
-    box-shadow: 0 0 4px -4px rgba(0, 0, 0.5);
+    height: 90%;
+    color: white;
 }
 
-#webcam-box {
-    margin-top: 1em;
-    width: 50vw;
-    height: 50vw;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#webcam {
-    width: 95%;
-    height: 95%;
-    border: 2px solid black;
-    border-radius: 50%;
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 83%);
-}
-
-#label-container {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0.5em 0;
-    border-radius: 1em;
-}
-
-#label-container>#backface {
-    width: 60%;
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 83%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 0.5em;
-    padding-right: 0.5em;
-    border-radius: 0.5em;
-}
-
-#label-container>#backface>#frontface {
-    width: 100%;
-    background-color: rgb(32, 32, 32);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 0.5em;
-}
-
-#label-box {
-    margin: 1em 0;
-    width: 60%;
-    padding: 1em;
-    background-color: white;
+#prob-bar {
+    background-color: cornflowerblue;
     color: black;
-    border-radius: 0.5em;
-    font-size: 5vw;
-}
-
-#prob-box {
-    width: 100%;
-    margin-bottom: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#prob-loader {
-    min-width: 5%;
-    padding: 0.2em;
-    background: linear-gradient(to right, #9800eb 0%, #c66f0c 83%);
-    border-radius: 1em;
-}
-
-#exp {
-    margin-top: 0.5em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#exp>#exp-opt-1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin: 0 1em;
-}
-
-#exp>div>div {
-    margin-left: 0.5em;
-}
-
-#count {
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    background-color: rgb(150, 150, 150);
-    border-radius: 2em;
-}
-
-#count>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-input {
-    border-radius: 0.5em;
-    border: none;
-    font-size: 5vw;
-    padding: 0.5em 0;
-    text-align: center;
-    outline: none;
-    width: 100%;
-}
-
-::placeholder {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-.dis-off {
-    display: none;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 0.5em;
-    font-size: 5vw;
-    background-color: rgb(70, 64, 73);
-    color: white;
-    border-radius: 0.5em;
-    padding: 0.5em;
-}
-
-.button1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(100, 100, 100);
-    font-size: 5vw;
-    color: white;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
-    padding: 0.5em;
-}
-
-.button2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(100, 100, 100);
-    font-size: 5vw;
-    color: white;
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
-    padding: 0.5em;
-}
-
-#toast-show {
-    position: fixed;
-    z-index: 500;
-    top: 100%;
-}
-
-#toast-container {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#toast {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 1em;
-    color: black;
-    padding: 0.5em;
-    z-index: 500;
-    font-size: 3vw;
-}
-
-.toast-animate {
-    animation-name: toast;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-}
-
-@keyframes toast {
-    0% {
-        top: 100%;
-    }
-    50% {
-        top: 60%;
-    }
-    100% {
-        top: 60%;
-    }
-}
-
-.glow1 {
-    animation-name: glow1;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-}
-
-@media (min-width:600px) {
-    .button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 0.5em;
-        font-size: 2vw;
-        background-color: rgb(70, 64, 73);
-        color: white;
-        border-radius: 0.5em;
-        padding: 0.5em;
-    }
-    .button1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(100, 100, 100);
-        font-size: 2vw;
-        color: white;
-        border-top-left-radius: 0.5em;
-        border-top-right-radius: 0.5em;
-        padding: 0.5em;
-    }
-    .button2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgb(100, 100, 100);
-        font-size: 2vw;
-        color: white;
-        border-bottom-left-radius: 0.5em;
-        border-bottom-right-radius: 0.5em;
-        padding: 0.5em;
-    }
-    input {
-        border-radius: 0.5em;
-        border: none;
-        font-size: 2vw;
-        padding: 0.5em 0;
-        text-align: center;
-        outline: none;
-        width: 50%;
-    }
-    #header>#container>#backface {
-        padding-bottom: 0.5em;
-    }
-    #header>#container>#backface>#frontface {
+@media (min-width:750px) {
+    .main {
         width: 100%;
-        background-color: rgb(22, 22, 22);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        border-bottom-left-radius: 1em;
-        border-bottom-right-radius: 1em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 2em;
     }
-    #header>#container>#backface>#frontface>img {
-        width: 8em;
-        height: 8em;
-    }
-    #header>#container>#backface>#frontface>#title {
-        font-size: 2vw;
-        padding-bottom: 1em;
-    }
-    #webcam-container>#title {
-        font-size: 3vw;
-    }
-    #webcam-box {
-        margin-top: 1em;
+    .webcam {
         width: 20vw;
         height: 20vw;
-        background-color: white;
+        background-color: aliceblue;
         border-radius: 50%;
-        display: flex;
+        margin: 0.5em 0;
+        border: 1em solid rgb(255, 212, 247);
+        border-left: 1em solid rgb(255, 137, 235);
+        border-right: 1em solid rgb(255, 137, 235);
+        box-shadow: 0 0 8px 0 rgb(255, 137, 235), 0 0 1em -1em rgba(0, 0, 0, 0.5);
+    }
+    .auth-box>div>div {
         justify-content: center;
-        align-items: center;
-    }
-    #label-box {
-        margin: 1em 0;
-        width: 60%;
-        padding: 1em;
-        background-color: white;
-        color: black;
-        border-radius: 0.5em;
-        font-size: 2vw;
-    }
-    #prob-box {
-        width: 100%;
-        margin-bottom: 1em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #prob-loader {
-        min-width: 5%;
-        padding: 0.2em;
-        background: linear-gradient(to right, #9800eb 0%, #c66f0c 83%);
-        border-radius: 1em;
-    }
-    #count {
-        margin-bottom: 0.5em;
-        display: grid;
-        grid-template-rows: 1fr 1fr 1fr;
-        background-color: rgb(150, 150, 150);
-        border-radius: 2em;
     }
 }
